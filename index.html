@@ -62,15 +62,6 @@ h1,h2,h3{font-family:var(--head)}
 .iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;min-width:34px;padding:0 10px;border-radius:10px;border:1px solid var(--line2);background:none;color:var(--t2);font-size:13px;font-weight:500;white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease)}
 .iconbtn:hover{background:var(--s3);color:var(--t1)}
 .iconbtn.danger:hover{color:#FF6B6B}
-.link{background:none;border:0;padding:0;color:var(--t3);font-size:12px}
-.link:hover{color:var(--t1)}
-
-/* admin bar */
-.adminbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 16px;margin-bottom:16px;border-radius:16px;background:rgba(25,150,75,.14);border:1px solid rgba(188,255,139,.25)}
-.adminbar .who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2)}
-.adminbar .who b{color:var(--lightgreen);font-weight:600}
-.adminbar .acts{display:flex;gap:8px}
-.banner{padding:16px;margin-bottom:16px;border-radius:16px;background:var(--s1);border:1px dashed var(--line2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;color:var(--t2);font-size:14px}
 
 /* hero: next up */
 .card{background:var(--s1);border:1px solid var(--line);border-radius:24px}
@@ -93,6 +84,7 @@ h1,h2,h3{font-family:var(--head)}
 .tab{border:0;background:none;padding:8px 18px;border-radius:999px;color:var(--t2);white-space:nowrap;font-size:14px;font-weight:500;transition:background .2s var(--ease),color .2s var(--ease)}
 .tab:hover{color:var(--t1)}
 .tab[aria-pressed="true"]{background:var(--s3);color:var(--t1);box-shadow:inset 0 0 0 1px var(--line2)}
+.controls-r{display:flex;align-items:center;gap:16px}
 .toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--t2);cursor:pointer}
 .toggle input{width:16px;height:16px;accent-color:var(--lightgreen);margin:0}
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
@@ -171,7 +163,6 @@ input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-ca
 /* footer */
 footer{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 footer strong{font-family:var(--head);font-size:20px;letter-spacing:-.01em}
-footer .r{display:flex;align-items:center;gap:16px}
 footer small{color:var(--t3);font-size:12px}
 </style>
 </head>
@@ -189,18 +180,6 @@ footer small{color:var(--t3);font-size:12px}
     <span class="status" id="status" hidden><i></i><span></span></span>
   </header>
 
-  <div class="adminbar" id="adminbar" hidden>
-    <div class="who"><svg class="ic" viewBox="0 0 16 16"><path d="M3 13.5c.8-2.3 2.7-3.5 5-3.5s4.2 1.2 5 3.5"/><circle cx="8" cy="5.5" r="2.75"/></svg><span>Editing as <b id="adminName"></b></span></div>
-    <div class="acts">
-      <button class="btn btn-primary btn-sm" id="addBtn"><svg class="ic" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>New event</button>
-      <button class="btn btn-ghost btn-sm" id="signOutBtn">Sign out</button>
-    </div>
-  </div>
-  <div class="banner" id="seedBanner" hidden>
-    <span>The database has no events yet. Import the events from the CFH Communication Calendar?</span>
-    <button class="btn btn-ghost btn-sm" id="seedBtn">Import events</button>
-  </div>
-
   <section class="card hero" id="hero" hidden>
     <svg class="hero__line" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M6891.4 33.8 C6827.2 16.6 6762.4 -22.8 6703.9 -89.7 C6651.5 -149.7 6474.8 -448.0 6317.7 -490.1 C6312.5 -491.5 6307.3 -492.6 6302.1 -493.4 C5930.1 -551.9 6228.0 744.7 5537.8 999.7 C5428.3 1040.1 5310.4 1045.5 5185.5 1016.1 C5179.7 1014.7 5174.0 1013.3 5168.2 1011.7 C5029.8 974.7 4870.9 880.0 4699.0 747.3 L4605.5 1634.4 C4576.7 1903.7 4372.9 1998.4 4198.8 1951.8 C4049.2 1911.7 3921.6 1767.2 3945.8 1539.6 L4087.8 190.9 C3812.2 -86.6 3526.9 -397.7 3254.3 -684.0 L3146.2 371.1 L3594.4 491.2 C3764.4 536.8 3865.4 711.6 3819.8 881.7 C3774.2 1051.7 3599.4 1152.7 3429.3 1107.1 L3080.5 1013.6 L3009.2 1709.4 C2988.8 1923.6 3141.1 2169.0 3343.4 2223.2 C3348.9 2224.7 3354.6 2226.0 3360.2 2227.2 C3643.7 2287.4 3657.5 2037.7 3943.7 2066.0 C3957.0 2067.3 3970.4 2069.8 3983.7 2073.4 C4191.1 2129.0 4377.5 2449.0 3947.6 2748.6 C3839.8 2823.8 3718.7 2872.8 3587.8 2894.3 C3456.5 2915.8 3321.8 2908.5 3187.3 2872.5 C2663.5 2732.1 2294.0 2193.8 2346.2 1646.9 L2646.2 -1284.1 C2440.0 -1466.4 2256.1 -1596.1 2109.2 -1635.5 C1160.5 -1889.7 1036.1 114.3 1521.1 244.3 C1743.2 303.7 1760.5 -199.5 2077.5 -114.6 C2078.1 -114.4 2078.7 -114.3 2079.3 -114.1 C2586.4 24.9 2138.3 1108.8 1396.9 910.1 C1396.7 910.1 1396.6 910.0 1396.4 910.0 C64.9 552.3 458.8 -2738.2 2280.6 -2250.0 C2844.5 -2098.9 3570.9 -1297.7 4175.2 -639.7 L4247.4 -1325.6 C4274.6 -1581.0 4491.2 -1672.2 4670.0 -1624.3 C4813.0 -1586.0 4931.9 -1458.6 4910.2 -1255.0 L4778.9 -10.5 C4933.0 133.6 5063.2 232.1 5160.0 258.0 C5160.3 258.1 5160.7 258.2 5161.0 258.3 C5442.9 332.6 5420.4 -154.6 5484.2 -475.1 C5603.5 -1073.6 6012.0 -1246.2 6416.0 -1137.9 C6737.7 -1051.7 7056.6 -787.2 7224.1 -417.9 C7351.2 -137.6 7125.8 96.6 6891.4 33.8"/></svg>
     <div class="hero__body" id="heroBody"></div>
@@ -208,7 +187,10 @@ footer small{color:var(--t3);font-size:12px}
 
   <div class="controls">
     <div class="tabs" id="years" role="group" aria-label="Year"></div>
-    <label class="toggle" id="pastToggle"><input type="checkbox" id="showPast"> Show past events</label>
+    <div class="controls-r">
+      <label class="toggle" id="pastToggle"><input type="checkbox" id="showPast"> Show past events</label>
+      <button class="btn btn-primary btn-sm" id="addBtn" disabled><svg class="ic" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>New event</button>
+    </div>
   </div>
   <div class="filters" id="filters" role="group" aria-label="Filter events"></div>
 
@@ -218,10 +200,7 @@ footer small{color:var(--t3);font-size:12px}
 
   <footer>
     <strong>Build on community.</strong>
-    <div class="r">
-      <small id="updated"></small>
-      <button class="link" id="signInBtn" hidden>Admin sign in</button>
-    </div>
+    <small id="updated"></small>
   </footer>
 </div>
 
@@ -263,8 +242,6 @@ const FIREBASE = {
   projectId: "cfh-holiday-planning",
   appId: "1:768605928338:web:eb4f9d529e01ab23845f4b",
 };
-// Accounts that see the edit controls. The database rules enforce the same list.
-const ADMINS = ["diegopinettipt@gmail.com"];
 
 // Event types. Colours follow the CFH fixed pairs: `c` is the readable accent on dark, `tint` the pair background.
 const TYPES = {
@@ -287,7 +264,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const thisYear = today.getFullYear();
 const YEARS = [thisYear, thisYear + 1];
 
-const state = {year: thisYear, type: "", loc: "", showPast: false, events: [], admin: null, source: ""};
+const state = {year: thisYear, type: "", loc: "", showPast: false, events: []};
 let db = null;   // { ref, push, set, remove, ... } once Firebase is loaded
 
 // ---------- helpers ----------
@@ -376,7 +353,7 @@ function eventRow(e){
     <div class="ev-acts">
       ${link ? `<a class="iconbtn" href="${esc(link)}" target="_blank" rel="noopener" title="More info">${ICON_LINK}</a>` : ""}
       ${cxl ? "" : `<button class="iconbtn" data-ics="${esc(e.id)}" title="Add to your calendar">${ICON_CAL}Add</button>`}
-      ${state.admin ? `<button class="iconbtn" data-edit="${esc(e.id)}" title="Edit event" aria-label="Edit ${esc(e.title)}">${ICON_EDIT}</button>` : ""}
+      <button class="iconbtn" data-edit="${esc(e.id)}" title="Edit event" aria-label="Edit ${esc(e.title)}">${ICON_EDIT}</button>
     </div>
   </article>`;
 }
@@ -423,16 +400,8 @@ function renderHero(){
     </div>`;
 }
 
-function renderAdmin(){
-  const a = state.admin;
-  $("#adminbar").hidden = !a;
-  $("#signInBtn").hidden = !!a || !db;
-  if (a) $("#adminName").textContent = a.displayName || a.email;
-  $("#seedBanner").hidden = !(a && state.source === "file");
-}
-
 function renderAll(){
-  renderHero(); renderAdmin(); renderControls();
+  renderHero(); renderControls();
   const list = visible();
   renderStrip(list); renderList(list);
 }
@@ -506,7 +475,7 @@ async function guarded(fn, okMsg){
   try { await fn(); dlg.close(); toast(okMsg); }
   catch (err){
     console.error(err);
-    $("#formErr").textContent = /permission/i.test(err.message) ? "This account is not allowed to edit events." : "Could not save. Check your connection and try again.";
+    $("#formErr").textContent = "Could not save. Check your connection and try again.";
     $("#formErr").hidden = false;
   }
   finally { btns.forEach(b => b.disabled = false); }
@@ -547,58 +516,17 @@ $("#addBtn").addEventListener("click", () => openEditor(null));
 $("#subtitle").textContent = `What's coming up at CFH · ${YEARS[0]}–${YEARS[1]}`;
 
 // ---------- data ----------
-async function loadFile(){
-  const r = await fetch("events.json", {cache:"no-cache"});
-  if (!r.ok) throw new Error(r.status);
-  const data = await r.json();
-  return Object.fromEntries((data.events || []).map((e, i) => ["seed-" + i, e]));
-}
-
 async function start(){
-  const configured = !FIREBASE.apiKey.startsWith("__");
-  if (configured){
-    try {
-      const V = "10.12.2";
-      const [{initializeApp}, A, D] = await Promise.all([
-        import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`),
-        import(`https://www.gstatic.com/firebasejs/${V}/firebase-auth.js`),
-        import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`),
-      ]);
-      const app = initializeApp(FIREBASE);
-      const auth = A.getAuth(app);
-      db = {...D, database: D.getDatabase(app)};
-
-      D.onValue(D.ref(db.database, "events"), async snap => {
-        const val = snap.val();
-        if (val){ state.source = "db"; setEvents(val); }
-        else { state.source = "file"; setEvents(await loadFile().catch(() => ({}))); }
-      }, err => { console.error(err); showError(); });
-
-      A.onAuthStateChanged(auth, user => {
-        const ok = user && ADMINS.includes((user.email || "").toLowerCase());
-        if (user && !ok){ toast("This account can't edit events"); A.signOut(auth); }
-        state.admin = ok ? user : null;
-        renderAll();
-      });
-      $("#signInBtn").addEventListener("click", async () => {
-        try { await A.signInWithPopup(auth, new A.GoogleAuthProvider()); }
-        catch (err){ console.error(err); if (err.code !== "auth/popup-closed-by-user") toast("Sign in failed"); }
-      });
-      $("#signOutBtn").addEventListener("click", () => A.signOut(auth));
-      $("#seedBtn").addEventListener("click", async () => {
-        const seed = await loadFile();
-        const now = new Date().toISOString();
-        const updates = {};
-        Object.values(seed).forEach(e => { updates[D.push(D.ref(db.database, "events")).key] = {...e, updated: now}; });
-        try { await D.set(D.ref(db.database, "events"), updates); toast("Events imported"); }
-        catch (err){ console.error(err); toast("Import failed"); }
-      });
-      renderAdmin();
-      return;
-    } catch (err){ console.error("Firebase unavailable, showing events.json", err); }
-  }
-  // Read-only fallback: the static file.
-  try { state.source = "file"; setEvents(await loadFile()); } catch { showError(); }
+  try {
+    const V = "10.12.2";
+    const [{initializeApp}, D] = await Promise.all([
+      import(`https://www.gstatic.com/firebasejs/${V}/firebase-app.js`),
+      import(`https://www.gstatic.com/firebasejs/${V}/firebase-database.js`),
+    ]);
+    db = {...D, database: D.getDatabase(initializeApp(FIREBASE))};
+    D.onValue(D.ref(db.database, "events"), snap => setEvents(snap.val()), err => { console.error(err); showError(); });
+    $("#addBtn").disabled = false;
+  } catch (err){ console.error(err); showError(); }
 }
 function showError(){
   $("#list").innerHTML = `<div class="card empty-state"><b>Events could not be loaded</b>Please refresh the page.</div>`;
