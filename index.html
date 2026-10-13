@@ -139,22 +139,49 @@ h1,h2,h3{font-family:var(--head)}
 .empty-state b{display:block;color:var(--t1);font-family:var(--head);font-size:18px;margin-bottom:4px}
 
 /* editor dialog */
-dialog{width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;border:1px solid var(--line2);border-radius:24px;background:var(--s1);color:var(--t1)}
-dialog::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)}
-.dlg{padding:24px;display:flex;flex-direction:column;gap:16px}
-.dlg h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.01em}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.grid .full{grid-column:1/-1}
-@media (max-width:480px){.grid{grid-template-columns:minmax(0,1fr)}}
-.field{display:flex;flex-direction:column;gap:6px;min-width:0}
-.field .lbl{color:var(--t2)}
-.input,.select,.textarea{height:40px;padding:0 12px;border-radius:12px;background:var(--s2);border:1px solid var(--line2);color:var(--t1);min-width:0;width:100%}
-.textarea{height:auto;min-height:84px;padding:10px 12px;resize:vertical}
-.input:focus,.select:focus,.textarea:focus{border-color:rgba(188,255,139,.6);outline:none;box-shadow:0 0 0 3px rgba(188,255,139,.15)}
-input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6}
-.dlg-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:4px}
+dialog{width:min(600px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:0;border:1px solid var(--line2);border-radius:24px;background:var(--s1);color:var(--t1);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--s3) transparent}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
+.dlg{display:flex;flex-direction:column}
+.dlg-h{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 24px;background:var(--s1);border-bottom:1px solid var(--line)}
+.dlg-h h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.01em}
+.dlg-x{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:none;color:var(--t2)}
+.dlg-x:hover{background:var(--s3);color:var(--t1)}
+.dlg-b{padding:8px 24px 0}
+.fs{border:0;margin:0;padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;min-width:0}
+.fs:last-of-type{border-bottom:0}
+.fs legend{float:left;grid-column:1/-1;padding:0;margin:0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--lightgreen);font-weight:600}
+.fs legend+*{clear:both}
+.full{grid-column:1/-1}
+@media (max-width:340px){.fs{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.dlg-h,.dlg-foot{padding-left:20px;padding-right:20px}.dlg-b{padding:4px 20px 0}.input[type=date],.input[type=time]{padding-left:12px;padding-right:6px}}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0;margin:0;padding:0;border:0}
+.field>.lbl,.field>legend{font-size:12px;letter-spacing:0;text-transform:none;color:var(--t2);font-weight:500;padding:0}
+.opt{color:var(--t3);font-weight:400}
+.input,.textarea{display:block;width:100%;min-width:0;height:44px;padding:0 14px;border-radius:12px;background:var(--s2);border:1px solid var(--line2);color:var(--t1);font-size:15px;-webkit-appearance:none;appearance:none;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.input::placeholder,.textarea::placeholder{color:var(--t3)}
+.textarea{height:auto;min-height:96px;padding:12px 14px;resize:none;line-height:1.45}
+.input:hover,.textarea:hover{border-color:rgba(255,255,255,.22)}
+.input:focus,.textarea:focus{border-color:rgba(188,255,139,.6);outline:none;box-shadow:0 0 0 3px rgba(188,255,139,.15)}
+.input[type=date],.input[type=time]{padding-right:10px;font-variant-numeric:tabular-nums}
+.input::-webkit-datetime-edit{padding:0}
+.input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.55;cursor:pointer;margin-left:8px;padding:4px;border-radius:6px}
+.input::-webkit-calendar-picker-indicator:hover{opacity:.9;background-color:rgba(0,0,0,.2)}
+/* choice pills (type / location / status) */
+.choices{display:flex;flex-wrap:wrap;gap:6px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice span{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:var(--s2);border:1px solid var(--line2);font-size:13px;font-weight:500;color:var(--t2);cursor:pointer;white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.choice span:hover{color:var(--t1)}
+.choice .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.choice input:checked+span{background:var(--s3);color:var(--t1);border-color:var(--t1)}
+.choice input:focus-visible+span{outline:2px solid var(--lightgreen);outline-offset:2px}
+.seg{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--s2);border:1px solid var(--line2);width:100%}
+.seg .choice{flex:1;min-width:0}
+.seg .choice span{width:100%;justify-content:center;height:34px;padding:0 10px;border:0;background:none}
+.seg .choice input:checked+span{background:var(--s3);color:var(--t1);box-shadow:inset 0 0 0 1px var(--line2)}
+.dlg-foot{position:sticky;bottom:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px 24px;background:var(--s1);border-top:1px solid var(--line)}
 .dlg-foot .r{display:flex;gap:8px;margin-left:auto}
-.err{color:#FF6B6B;font-size:13px;margin:0}
+.err{color:#FF6B6B;font-size:13px;margin:0;padding:0 24px 12px}
 
 /* toast */
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;padding:10px 16px;border-radius:12px;background:var(--s3);border:1px solid var(--line2);font-size:14px;transition:opacity .2s var(--ease),transform .2s var(--ease);pointer-events:none;z-index:10}
@@ -204,20 +231,47 @@ footer small{color:var(--t3);font-size:12px}
   </footer>
 </div>
 
-<dialog id="editor">
+<dialog id="editor" aria-labelledby="formTitle">
   <form class="dlg" id="form" method="dialog" novalidate>
-    <h2 id="formTitle">New event</h2>
-    <div class="grid">
-      <label class="field full"><span class="lbl">Title</span><input class="input" name="title" required maxlength="120" placeholder="e.g. Throwdown Teams"></label>
-      <label class="field"><span class="lbl">Date</span><input class="input" type="date" name="date" required></label>
-      <label class="field"><span class="lbl">End date (optional)</span><input class="input" type="date" name="end"></label>
-      <label class="field"><span class="lbl">Start time (optional)</span><input class="input" type="time" name="time"></label>
-      <label class="field"><span class="lbl">End time (optional)</span><input class="input" type="time" name="endTime"></label>
-      <label class="field"><span class="lbl">Type</span><select class="select" name="type" id="typeSelect"></select></label>
-      <label class="field"><span class="lbl">Location</span><select class="select" name="location"><option value="">—</option><option>Central</option><option>Airport</option></select></label>
-      <label class="field"><span class="lbl">Status</span><select class="select" name="status"><option value="">Confirmed</option><option value="tbc">To be confirmed</option><option value="cancelled">Cancelled</option></select></label>
-      <label class="field"><span class="lbl">Link (optional)</span><input class="input" type="url" name="link" placeholder="https://"></label>
-      <label class="field full"><span class="lbl">Description (optional)</span><textarea class="textarea" name="description" maxlength="1000"></textarea></label>
+    <div class="dlg-h">
+      <h2 id="formTitle">New event</h2>
+      <button type="button" class="dlg-x" id="closeBtn" aria-label="Close"><svg class="ic" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    </div>
+    <div class="dlg-b">
+      <fieldset class="fs">
+        <legend>Event</legend>
+        <label class="field full"><span class="lbl">Title</span><input class="input" name="title" required maxlength="120" placeholder="e.g. Throwdown Teams" autocomplete="off"></label>
+        <fieldset class="field full"><legend>Type</legend><div class="choices" id="typeChoices"></div></fieldset>
+      </fieldset>
+      <fieldset class="fs">
+        <legend>When</legend>
+        <label class="field"><span class="lbl">Date</span><input class="input" type="date" name="date" required></label>
+        <label class="field"><span class="lbl">End date <span class="opt">· optional</span></span><input class="input" type="date" name="end"></label>
+        <label class="field"><span class="lbl">Start time <span class="opt">· optional</span></span><input class="input" type="time" name="time"></label>
+        <label class="field"><span class="lbl">End time <span class="opt">· optional</span></span><input class="input" type="time" name="endTime"></label>
+      </fieldset>
+      <fieldset class="fs">
+        <legend>Where</legend>
+        <fieldset class="field full"><legend>Location</legend>
+          <div class="seg">
+            <label class="choice"><input type="radio" name="location" value="" checked><span>None</span></label>
+            <label class="choice"><input type="radio" name="location" value="Central"><span>Central</span></label>
+            <label class="choice"><input type="radio" name="location" value="Airport"><span>Airport</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field full"><legend>Status</legend>
+          <div class="seg">
+            <label class="choice"><input type="radio" name="status" value="" checked><span>Confirmed</span></label>
+            <label class="choice"><input type="radio" name="status" value="tbc"><span>To confirm</span></label>
+            <label class="choice"><input type="radio" name="status" value="cancelled"><span>Cancelled</span></label>
+          </div>
+        </fieldset>
+      </fieldset>
+      <fieldset class="fs">
+        <legend>Details</legend>
+        <label class="field full"><span class="lbl">Description <span class="opt">· optional</span></span><textarea class="textarea" name="description" maxlength="1000" placeholder="What should coaches know?"></textarea></label>
+        <label class="field full"><span class="lbl">Link <span class="opt">· optional</span></span><input class="input" type="url" name="link" placeholder="https://" autocomplete="off"></label>
+      </fieldset>
     </div>
     <p class="err" id="formErr" hidden></p>
     <div class="dlg-foot">
@@ -439,7 +493,8 @@ function ics(e){
 
 // ---------- editor ----------
 const dlg = $("#editor"), form = $("#form");
-$("#typeSelect").innerHTML = Object.entries(TYPES).map(([k,v]) => `<option value="${k}">${esc(v.label)}</option>`).join("");
+$("#typeChoices").innerHTML = Object.entries(TYPES).map(([k,v], i) =>
+  `<label class="choice"><input type="radio" name="type" value="${k}" ${i ? "" : "checked"}><span><i class="dot" style="background:${v.c}"></i>${esc(v.label)}</span></label>`).join("");
 let editingId = null;
 
 function openEditor(e){
@@ -493,6 +548,7 @@ form.addEventListener("submit", ev => {
     editingId ? "Event updated" : "Event added");
 });
 $("#cancelBtn").addEventListener("click", () => dlg.close());
+$("#closeBtn").addEventListener("click", () => dlg.close());
 $("#delBtn").addEventListener("click", ev => {
   const b = ev.currentTarget;
   if (!b.classList.contains("armed")){ b.classList.add("armed"); b.textContent = "Tap again to delete"; return; }
