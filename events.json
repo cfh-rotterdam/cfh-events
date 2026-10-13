@@ -1,0 +1,225 @@
+{
+  "updated": "2026-10-13",
+  "events": [
+    {
+      "date": "2026-01-08",
+      "title": "Stink & Drink NY",
+      "type": "social",
+      "location": "Central"
+    },
+    {
+      "date": "2026-02-08",
+      "title": "Gymnastics Clinic",
+      "type": "clinic",
+      "location": "Central"
+    },
+    {
+      "date": "2026-02-15",
+      "title": "HYROX 100% Sim",
+      "type": "hyrox",
+      "location": "Central"
+    },
+    {
+      "date": "2026-02-26",
+      "title": "Start CrossFit Open",
+      "type": "competition"
+    },
+    {
+      "date": "2026-03-01",
+      "title": "CF Open WO 26.1",
+      "type": "competition"
+    },
+    {
+      "date": "2026-03-07",
+      "title": "Throwdown Individual",
+      "type": "competition",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-03-08",
+      "title": "CF Open WO 26.2",
+      "type": "competition"
+    },
+    {
+      "date": "2026-03-15",
+      "title": "CF Open WO 26.3",
+      "type": "competition"
+    },
+    {
+      "date": "2026-03-21",
+      "title": "HYROX Nocco Power Hour",
+      "type": "hyrox",
+      "location": "Central"
+    },
+    {
+      "date": "2026-03-27",
+      "title": "Stink & Drink NY",
+      "type": "social",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-03-30",
+      "title": "HYROX Mechelen",
+      "type": "hyrox"
+    },
+    {
+      "date": "2026-04-04",
+      "title": "Nutrition Clinic",
+      "type": "clinic",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-04-04",
+      "title": "Team-uitje",
+      "type": "team"
+    },
+    {
+      "date": "2026-04-05",
+      "title": "Easter – Box closed",
+      "type": "closed"
+    },
+    {
+      "date": "2026-04-06",
+      "title": "Easter WOD",
+      "type": "special"
+    },
+    {
+      "date": "2026-04-15",
+      "title": "HYROX Rotterdam",
+      "type": "hyrox"
+    },
+    {
+      "date": "2026-04-18",
+      "title": "Team meeting coaches",
+      "type": "team",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Kingsday Special",
+      "type": "special"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "5 May Hero WOD",
+      "type": "special"
+    },
+    {
+      "date": "2026-05-14",
+      "title": "Ascension Day – Box closed",
+      "type": "closed"
+    },
+    {
+      "date": "2026-05-15",
+      "title": "HYROX Heerenveen",
+      "type": "hyrox"
+    },
+    {
+      "date": "2026-05-24",
+      "title": "Pentecost – Box closed",
+      "type": "closed"
+    },
+    {
+      "date": "2026-05-25",
+      "title": "Murph & Nocco",
+      "type": "special"
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Clinic Running PAC",
+      "type": "clinic",
+      "location": "Central"
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Q&A Running PAC",
+      "type": "clinic",
+      "location": "Central"
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Stink & Drink NY",
+      "type": "social",
+      "location": "Central",
+      "description": "Team Training"
+    },
+    {
+      "date": "2026-07-25",
+      "title": "Team meeting coaches",
+      "type": "team",
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-27",
+      "title": "Buddy Throwdown",
+      "type": "competition",
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-08-28",
+      "title": "Stink & Drink NY",
+      "type": "social",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Clinic",
+      "type": "clinic",
+      "location": "Airport",
+      "status": "tbc"
+    },
+    {
+      "date": "2026-09-06",
+      "title": "Team meeting coaches",
+      "type": "team"
+    },
+    {
+      "date": "2026-10-03",
+      "title": "Clinic Healthy with Pleasure",
+      "type": "clinic",
+      "location": "Central"
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Throwdown Teams",
+      "type": "competition",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "Hero WOD Chad",
+      "type": "special"
+    },
+    {
+      "date": "2026-11-28",
+      "title": "Team meeting coaches",
+      "type": "team"
+    },
+    {
+      "date": "2026-12-05",
+      "title": "Clinic OLY",
+      "type": "clinic",
+      "location": "Airport"
+    },
+    {
+      "date": "2026-12-24",
+      "title": "12 Days of Christmas",
+      "type": "special"
+    },
+    {
+      "date": "2026-12-25",
+      "title": "Christmas – Box closed",
+      "type": "closed"
+    },
+    {
+      "date": "2026-12-26",
+      "title": "Xmas Morning WOD",
+      "type": "special"
+    },
+    {
+      "date": "2026-12-31",
+      "title": "New Year Special",
+      "type": "special"
+    }
+  ]
+}
