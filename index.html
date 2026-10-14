@@ -349,7 +349,7 @@ footer small{color:var(--t3);font-size:12px}
         <legend>Your answer</legend>
         <label class="field full"><span class="lbl">Your name</span><input class="input" name="name" maxlength="40" placeholder="e.g. Diego" autocomplete="given-name"></label>
         <div class="seg full">
-          <label class="choice yes"><input type="radio" name="answer" value="yes" checked><span>I'm going</span></label>
+          <label class="choice yes"><input type="radio" name="answer" value="yes" checked><span>I'm joining</span></label>
           <label class="choice nope"><input type="radio" name="answer" value="no"><span>Can't make it</span></label>
         </div>
         <label class="field full"><span class="lbl">Note <span class="opt">· optional</span></span><textarea class="textarea" name="note" maxlength="300" placeholder="e.g. I'll be 15 minutes late"></textarea></label>
@@ -485,7 +485,7 @@ const initials = n => n.trim().split(/\s+/).map(w => w[0]).join("").slice(0,2).t
 function rsvpPills(e){
   const a = answers(e.id), yes = a.filter(x => x.status === "yes").length, no = a.length - yes;
   if (!a.length) return `<span class="pill n">No answers yet</span>`;
-  return `<span class="pill go">${yes} going</span>${no ? `<span class="pill no">${no} not going</span>` : ""}`;
+  return `<span class="pill go">${yes} joining</span>${no ? `<span class="pill no">${no} not joining</span>` : ""}`;
 }
 
 const rdlg = $("#rsvp"), rform = $("#rsvpForm");
@@ -503,7 +503,7 @@ function renderRsvpList(){
       </div>`).join("")}</div>`;
   };
   $("#rsvpList").innerHTML = `<legend>Answers</legend>` +
-    (a.length ? group("yes", "Going") + group("no", "Not going") : `<p class="rempty">Nobody has answered yet.</p>`);
+    (a.length ? group("yes", "Joining") + group("no", "Not joining") : `<p class="rempty">Nobody has answered yet.</p>`);
 }
 function openRsvp(e){
   rsvpId = e.id;
