@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "events": [
     {
       "date": "2026-01-08",
@@ -131,17 +131,17 @@
       "location": "Central"
     },
     {
-      "date": "2026-06-08",
-      "title": "Q&A Running PAC",
-      "type": "clinic",
-      "location": "Central"
-    },
-    {
       "date": "2026-06-12",
       "title": "Stink & Drink NY",
       "type": "social",
       "location": "Central",
       "description": "Team Training"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "Buddy Throwdown",
+      "type": "competition",
+      "status": "cancelled"
     },
     {
       "date": "2026-07-25",
@@ -150,10 +150,17 @@
       "status": "cancelled"
     },
     {
-      "date": "2026-07-27",
-      "title": "Buddy Throwdown",
-      "type": "competition",
-      "status": "cancelled"
+      "date": "2026-08-01",
+      "title": "Clinic",
+      "type": "clinic",
+      "location": "Airport",
+      "status": "tbc"
+    },
+    {
+      "date": "2026-08-08",
+      "title": "Q&A Running PAC",
+      "type": "clinic",
+      "location": "Central"
     },
     {
       "date": "2026-08-28",
@@ -162,28 +169,21 @@
       "location": "Airport"
     },
     {
-      "date": "2026-09-01",
-      "title": "Clinic",
-      "type": "clinic",
-      "location": "Airport",
-      "status": "tbc"
-    },
-    {
       "date": "2026-09-06",
       "title": "Team meeting coaches",
       "type": "team"
+    },
+    {
+      "date": "2026-09-26",
+      "title": "Throwdown Teams",
+      "type": "competition",
+      "location": "Airport"
     },
     {
       "date": "2026-10-03",
       "title": "Clinic Healthy with Pleasure",
       "type": "clinic",
       "location": "Central"
-    },
-    {
-      "date": "2026-10-26",
-      "title": "Throwdown Teams",
-      "type": "competition",
-      "location": "Airport"
     },
     {
       "date": "2026-11-15",

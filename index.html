@@ -67,14 +67,14 @@ h1,h2,h3{font-family:var(--head)}
 .card{background:var(--s1);border:1px solid var(--line);border-radius:24px}
 .hero{position:relative;overflow:hidden;padding:28px 24px;margin-bottom:24px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end}
 .hero__line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hero__line path{fill:none;stroke:var(--lightgreen);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linecap:round;opacity:.9}
+.hero__line path{fill:none;stroke:var(--red);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linecap:round;opacity:.9}
 .hero__body{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);font-weight:600}
-.hero .lbl{color:var(--lightgreen)}
+.hero .lbl{color:var(--red)}
 .hero h2{font-size:clamp(28px,5vw,44px);line-height:1.05;letter-spacing:-.02em;font-weight:700;margin:8px 0 10px;max-width:18ch}
 .hero .meta{color:var(--t2)}
 .count{text-align:right}
-.num{font-family:var(--head);font-size:72px;font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;-webkit-background-clip:text;background-clip:text;color:transparent;background-image:linear-gradient(135deg,var(--lightgreen),var(--green))}
+.num{font-family:var(--head);font-size:72px;font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;-webkit-background-clip:text;background-clip:text;color:transparent;background-image:linear-gradient(135deg,var(--pink),var(--red))}
 .count .unit{color:var(--t2);font-size:13px;margin-top:4px}
 
 /* controls */
@@ -183,6 +183,36 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
 .dlg-foot .r{display:flex;gap:8px;margin-left:auto}
 .err{color:#FF6B6B;font-size:13px;margin:0;padding:0 24px 12px}
 
+/* birthdays */
+.bdays{margin-top:32px;padding:20px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.bd{display:flex;align-items:center;gap:12px;padding:10px 8px 10px 10px;border-radius:14px;background:var(--s2);border:1px solid var(--line)}
+.bd.today{border-color:rgba(255,175,255,.5);background:rgba(255,40,40,.12)}
+.bd .avatar{color:var(--pink);background:rgba(255,40,40,.2)}
+.bd .who{flex:1;min-width:0}
+.bd .nm{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bd .when{color:var(--t2);font-size:12px;font-variant-numeric:tabular-nums}
+.bd .when b{color:var(--pink);font-weight:600}
+.bd .iconbtn{border-color:transparent;height:30px;min-width:30px;padding:0 8px}
+
+/* attendance (team events) */
+.pill.go{color:var(--lightgreen);background:rgba(25,150,75,.22)}
+.pill.no{color:#FF6B6B;background:rgba(255,40,40,.12)}
+.dlg-sub{margin:4px 0 0;color:var(--t2);font-size:13px}
+.seg .choice.yes input:checked+span{color:var(--lightgreen)}
+.seg .choice.nope input:checked+span{color:#FF6B6B}
+.rgroup{grid-column:1/-1;display:flex;flex-direction:column;gap:6px}
+.rgroup .lbl{margin-bottom:2px}
+.rrow{display:flex;align-items:flex-start;gap:12px;padding:10px 8px 10px 10px;border-radius:14px;background:var(--s2);border:1px solid var(--line)}
+.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:11px;font-weight:600;letter-spacing:.02em;border:1px solid var(--line2)}
+.avatar.yes{color:var(--lightgreen);background:rgba(25,150,75,.22)}
+.avatar.no{color:#FF6B6B;background:rgba(255,40,40,.12)}
+.rrow .who{min-width:0;flex:1;padding-top:5px}
+.rrow .nm{font-weight:600;font-size:14px;line-height:1.3}
+.rrow .note{color:var(--t2);font-size:13px;margin-top:2px;white-space:pre-line;overflow-wrap:anywhere}
+.rrow .dlg-x{width:30px;height:30px;border-color:transparent}
+.rempty{grid-column:1/-1;color:var(--t3);font-size:13px;margin:0}
+
 /* toast */
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;padding:10px 16px;border-radius:12px;background:var(--s3);border:1px solid var(--line2);font-size:14px;transition:opacity .2s var(--ease),transform .2s var(--ease);pointer-events:none;z-index:10}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -225,6 +255,14 @@ footer small{color:var(--t3);font-size:12px}
 
   <main class="months" id="list"><div class="card empty-state">Loading events…</div></main>
 
+  <section class="card bdays" id="bdays" aria-labelledby="bdaysTitle">
+    <div class="sec-h">
+      <h2 id="bdaysTitle">Birthdays</h2>
+      <button class="btn btn-ghost btn-sm" id="addBday"><svg class="ic" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Add birthday</button>
+    </div>
+    <div class="bgrid" id="bgrid"></div>
+  </section>
+
   <footer>
     <strong>Build on community.</strong>
     <small id="updated"></small>
@@ -249,6 +287,7 @@ footer small{color:var(--t3);font-size:12px}
         <label class="field"><span class="lbl">End date <span class="opt">· optional</span></span><input class="input" type="date" name="end"></label>
         <label class="field"><span class="lbl">Start time <span class="opt">· optional</span></span><input class="input" type="time" name="time"></label>
         <label class="field"><span class="lbl">End time <span class="opt">· optional</span></span><input class="input" type="time" name="endTime"></label>
+        <label class="toggle full"><input type="checkbox" name="repeat" value="yearly"> Repeats every year</label>
       </fieldset>
       <fieldset class="fs">
         <legend>Where</legend>
@@ -284,6 +323,34 @@ footer small{color:var(--t3);font-size:12px}
   </form>
 </dialog>
 
+<dialog id="rsvp" aria-labelledby="rsvpTitle">
+  <form class="dlg" id="rsvpForm" method="dialog" novalidate>
+    <div class="dlg-h">
+      <div><h2 id="rsvpTitle">Attendance</h2><p class="dlg-sub" id="rsvpSub"></p></div>
+      <button type="button" class="dlg-x" data-close aria-label="Close"><svg class="ic" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+    </div>
+    <div class="dlg-b">
+      <fieldset class="fs">
+        <legend>Your answer</legend>
+        <label class="field full"><span class="lbl">Your name</span><input class="input" name="name" maxlength="40" placeholder="e.g. Diego" autocomplete="given-name"></label>
+        <div class="seg full">
+          <label class="choice yes"><input type="radio" name="answer" value="yes" checked><span>I'm going</span></label>
+          <label class="choice nope"><input type="radio" name="answer" value="no"><span>Can't make it</span></label>
+        </div>
+        <label class="field full"><span class="lbl">Note <span class="opt">· optional</span></span><textarea class="textarea" name="note" maxlength="300" placeholder="e.g. I'll be 15 minutes late"></textarea></label>
+      </fieldset>
+      <fieldset class="fs" id="rsvpList"></fieldset>
+    </div>
+    <p class="err" id="rsvpErr" hidden></p>
+    <div class="dlg-foot">
+      <div class="r">
+        <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+        <button type="submit" class="btn btn-primary">Save answer</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script type="module">
@@ -303,9 +370,10 @@ const TYPES = {
   competition: {label:"Competition", c:"#FF2828", tint:"rgba(255,40,40,.16)"},
   hyrox:       {label:"HYROX",       c:"#FCED21", tint:"rgba(252,237,33,.12)"},
   special:     {label:"Special WOD", c:"#FFA50A", tint:"rgba(255,165,10,.14)"},
-  social:      {label:"Social",      c:"#FFAFFF", tint:"rgba(255,175,255,.12)"},
+  social:      {label:"Social",      c:"#FAFAFA", tint:"rgba(255,255,255,.1)"},
   team:        {label:"Team",        c:"#BCFF8B", tint:"rgba(25,150,75,.28)"},
-  closed:      {label:"Box closed",  c:"#E1E1E1", tint:"rgba(225,225,225,.08)"},
+  birthday:    {label:"Birthday",    c:"#FFAFFF", tint:"rgba(255,40,40,.2)"},
+  closed:      {label:"Box closed",  c:"#A1A1AA", tint:"rgba(255,255,255,.05)"},
 };
 const FALLBACK_TYPE = {label:"Event", c:"#E1E1E1", tint:"rgba(225,225,225,.08)"};
 const LOCATIONS = {Central:"cen", Airport:"air"};
@@ -318,7 +386,7 @@ const today = new Date(); today.setHours(0,0,0,0);
 const thisYear = today.getFullYear();
 const YEARS = [thisYear, thisYear + 1];
 
-const state = {year: thisYear, type: "", loc: "", showPast: false, events: []};
+const state = {year: thisYear, type: "", loc: "", showPast: false, events: [], raw: {}, rsvp: {}, birthdays: []};
 let db = null;   // { ref, push, set, remove, ... } once Firebase is loaded
 
 // ---------- helpers ----------
@@ -332,6 +400,8 @@ const fmtLong = d => WD[d.getDay()] + " " + d.getDate() + " " + MONTHS[d.getMont
 const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
 const ICON_CAL = `<svg class="ic" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3M8 8.5v3M6.5 10h3"/></svg>`;
 const ICON_EDIT = `<svg class="ic" viewBox="0 0 16 16"><path d="M10.5 2.5l3 3L6 13H3v-3z"/></svg>`;
+const ICON_PEOPLE = `<svg class="ic" viewBox="0 0 16 16"><circle cx="6" cy="5.5" r="2.5"/><path d="M1.5 13.5c.6-2 2.3-3 4.5-3s3.9 1 4.5 3M10.5 3.2a2.5 2.5 0 010 4.6M12 10.7c1.2.4 2 1.4 2.5 2.8"/></svg>`;
+const ICON_X = `<svg class="ic" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg>`;
 const ICON_LINK = `<svg class="ic" viewBox="0 0 16 16"><path d="M9 3h4v4M13 3L7 9M11 9.5V13H3V5h3.5"/></svg>`;
 
 function toast(msg){
@@ -340,9 +410,16 @@ function toast(msg){
 }
 
 function setEvents(obj){
-  state.events = Object.entries(obj || {})
-    .map(([id, e]) => ({...e, id}))
-    .filter(e => e.date && e.title)
+  state.loaded = true;
+  state.raw = Object.fromEntries(Object.entries(obj || {}).filter(([, e]) => e.date && e.title).map(([id, e]) => [id, {...e, id}]));
+  const all = Object.values(state.raw);
+  state.birthdays = all.filter(e => e.type === "birthday");
+  state.events = all.filter(e => e.type !== "birthday")
+    .flatMap(e => e.repeat !== "yearly" ? [{...e, baseId: e.id}] : YEARS.map(y => {
+      const dy = y - Number(e.date.slice(0,4));
+      return {...e, baseId: e.id, id: e.id + "@" + y, date: y + e.date.slice(4),
+              end: e.end && (Number(e.end.slice(0,4)) + dy) + e.end.slice(4)};
+    }))
     .map(e => ({...e, startDate: parseDate(e.date)}))
     .sort((a,b) => a.startDate - b.startDate || (a.time || "").localeCompare(b.time || "") || a.title.localeCompare(b.title));
   const last = state.events.map(e => e.updated || "").sort().pop();
@@ -384,6 +461,72 @@ function renderStrip(list){
   }).join("");
 }
 
+// ---------- attendance ----------
+// Team events (coach meetings, team outings) ask coaches to confirm. Answers live under /rsvp/<event id>/<name>.
+const hasRsvp = e => e.type === "team";
+const answers = id => Object.entries(state.rsvp[id] || {}).map(([key, a]) => ({...a, key})).sort((a,b) => a.name.localeCompare(b.name));
+const nameKey = n => n.trim().toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const initials = n => n.trim().split(/\s+/).map(w => w[0]).join("").slice(0,2).toUpperCase();
+function rsvpPills(e){
+  const a = answers(e.id), yes = a.filter(x => x.status === "yes").length, no = a.length - yes;
+  if (!a.length) return `<span class="pill n">No answers yet</span>`;
+  return `<span class="pill go">${yes} going</span>${no ? `<span class="pill no">${no} not going</span>` : ""}`;
+}
+
+const rdlg = $("#rsvp"), rform = $("#rsvpForm");
+let rsvpId = null;
+function renderRsvpList(){
+  const a = answers(rsvpId);
+  const group = (st, label) => {
+    const rows = a.filter(x => x.status === st);
+    if (!rows.length) return "";
+    return `<div class="rgroup"><span class="lbl">${label} · ${rows.length}</span>${rows.map(x => `
+      <div class="rrow">
+        <span class="avatar ${st}">${esc(initials(x.name))}</span>
+        <div class="who"><div class="nm">${esc(x.name)}</div>${x.note ? `<div class="note">${esc(x.note)}</div>` : ""}</div>
+        <button type="button" class="dlg-x" data-unrsvp="${esc(x.key)}" title="Remove answer" aria-label="Remove answer of ${esc(x.name)}">${ICON_X}</button>
+      </div>`).join("")}</div>`;
+  };
+  $("#rsvpList").innerHTML = `<legend>Answers</legend>` +
+    (a.length ? group("yes", "Going") + group("no", "Not going") : `<p class="rempty">Nobody has answered yet.</p>`);
+}
+function openRsvp(e){
+  rsvpId = e.id;
+  rform.reset();
+  try { rform.name.value = localStorage.getItem("cfh-name") || ""; } catch {}
+  const mine = rform.name.value && (state.rsvp[e.id] || {})[nameKey(rform.name.value)];
+  if (mine){ rform.answer.value = mine.status; rform.note.value = mine.note || ""; }
+  $("#rsvpTitle").textContent = e.title;
+  $("#rsvpSub").textContent = fmtLong(e.startDate) + (e.time ? " · " + e.time : "") + (e.location ? " · " + e.location : "");
+  $("#rsvpErr").hidden = true;
+  renderRsvpList();
+  rdlg.showModal();
+  if (!rform.name.value) rform.name.focus();
+}
+rform.addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const name = rform.name.value.trim().replace(/\s+/g, " ");
+  const key = nameKey(name);
+  if (!key){ $("#rsvpErr").textContent = "Add your name."; $("#rsvpErr").hidden = false; return; }
+  const answer = {name, status: rform.answer.value, at: new Date().toISOString()};
+  const note = rform.note.value.trim(); if (note) answer.note = note;
+  try {
+    await db.set(db.ref(db.database, `rsvp/${rsvpId}/${key}`), answer);
+    try { localStorage.setItem("cfh-name", name); } catch {}
+    rdlg.close(); toast(answer.status === "yes" ? "See you there" : "Answer saved");
+  } catch (err){ console.error(err); $("#rsvpErr").textContent = "Could not save. Check your connection and try again."; $("#rsvpErr").hidden = false; }
+});
+rdlg.addEventListener("click", async ev => {
+  if (ev.target.closest("[data-close]")) return rdlg.close();
+  const x = ev.target.closest("[data-unrsvp]");
+  if (x){ try { await db.remove(db.ref(db.database, `rsvp/${rsvpId}/${x.dataset.unrsvp}`)); } catch (err){ console.error(err); toast("Could not remove"); } }
+});
+// Prefill the answer when a coach types a name that already answered.
+rform.name.addEventListener("change", () => {
+  const mine = (state.rsvp[rsvpId] || {})[nameKey(rform.name.value)];
+  if (mine){ rform.answer.value = mine.status; rform.note.value = mine.note || ""; }
+});
+
 function eventRow(e){
   const t = typeOf(e);
   const cxl = e.status === "cancelled";
@@ -401,13 +544,15 @@ function eventRow(e){
         ${range ? `<span class="pill n">${esc(range)}</span>` : ""}
         ${cxl ? `<span class="pill cancel">Cancelled</span>` : ""}
         ${e.status === "tbc" ? `<span class="pill tbc">To be confirmed</span>` : ""}
+        ${hasRsvp(e) ? rsvpPills(e) : ""}
       </div>
       ${e.description ? `<p class="desc">${esc(e.description)}</p>` : ""}
     </div>
     <div class="ev-acts">
       ${link ? `<a class="iconbtn" href="${esc(link)}" target="_blank" rel="noopener" title="More info">${ICON_LINK}</a>` : ""}
+      ${hasRsvp(e) && !cxl ? `<button class="iconbtn" data-rsvp="${esc(e.id)}" title="Confirm your attendance">${ICON_PEOPLE}RSVP</button>` : ""}
       ${cxl ? "" : `<button class="iconbtn" data-ics="${esc(e.id)}" title="Add to your calendar">${ICON_CAL}Add</button>`}
-      <button class="iconbtn" data-edit="${esc(e.id)}" title="Edit event" aria-label="Edit ${esc(e.title)}">${ICON_EDIT}</button>
+      <button class="iconbtn" data-edit="${esc(e.baseId)}" title="Edit event" aria-label="Edit ${esc(e.title)}">${ICON_EDIT}</button>
     </div>
   </article>`;
 }
@@ -454,8 +599,23 @@ function renderHero(){
     </div>`;
 }
 
+function renderBirthdays(){
+  const next = e => { const d = parseDate(thisYear + e.date.slice(4)); if (d < today) d.setFullYear(thisYear + 1); return d; };
+  const list = state.birthdays.map(e => ({...e, nextDate: next(e)})).sort((a,b) => a.nextDate - b.nextDate);
+  $("#bgrid").innerHTML = list.length ? list.map(e => {
+    const days = Math.round((e.nextDate - today) / 864e5);
+    const name = e.title.replace(/[’']s birthday$/i, "");
+    return `<div class="bd ${days === 0 ? "today" : ""}">
+      <span class="avatar">${esc(initials(name))}</span>
+      <div class="who"><div class="nm">${esc(name)}</div>
+        <div class="when">${e.nextDate.getDate()} ${MONTHS[e.nextDate.getMonth()]} · ${days === 0 ? "<b>Today</b>" : days === 1 ? "tomorrow" : "in " + days + " days"}</div></div>
+      <button class="iconbtn" data-edit="${esc(e.id)}" title="Edit birthday" aria-label="Edit ${esc(e.title)}">${ICON_EDIT}</button>
+    </div>`;
+  }).join("") : `<p class="rempty">No birthdays yet.</p>`;
+}
+
 function renderAll(){
-  renderHero(); renderControls();
+  renderHero(); renderControls(); renderBirthdays();
   const list = visible();
   renderStrip(list); renderList(list);
 }
@@ -479,6 +639,7 @@ function ics(e){
     `UID:${e.id}@cfh-events`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").split(".")[0]}Z`,
     when,
+    e.repeat === "yearly" ? "RRULE:FREQ=YEARLY" : "",
     `SUMMARY:${icsEsc(e.title)}`,
     e.location ? `LOCATION:${icsEsc("CFH " + e.location)}` : "",
     e.description || e.link ? `DESCRIPTION:${icsEsc([e.description, safeUrl(e.link)].filter(Boolean).join("\n\n"))}` : "",
@@ -497,11 +658,12 @@ $("#typeChoices").innerHTML = Object.entries(TYPES).map(([k,v], i) =>
   `<label class="choice"><input type="radio" name="type" value="${k}" ${i ? "" : "checked"}><span><i class="dot" style="background:${v.c}"></i>${esc(v.label)}</span></label>`).join("");
 let editingId = null;
 
-function openEditor(e){
+function openEditor(e, preset){
   editingId = e ? e.id : null;
   form.reset();
   FIELDS.forEach(f => { if (form[f]) form[f].value = e ? (e[f] || "") : ""; });
-  if (!e){ form.type.value = "clinic"; form.date.value = ""; }
+  form.repeat.checked = !!e && e.repeat === "yearly";
+  if (!e){ form.type.value = preset || "clinic"; form.date.value = ""; form.repeat.checked = preset === "birthday"; }
   $("#formTitle").textContent = e ? "Edit event" : "New event";
   $("#delBtn").hidden = !e;
   $("#delBtn").classList.remove("armed"); $("#delBtn").textContent = "Delete";
@@ -513,6 +675,7 @@ function openEditor(e){
 function formData(){
   const out = {};
   FIELDS.forEach(f => { const v = form[f].value.trim(); if (v) out[f] = v; });
+  if (form.repeat.checked) out.repeat = "yearly";
   return out;
 }
 
@@ -549,18 +712,24 @@ form.addEventListener("submit", ev => {
 });
 $("#cancelBtn").addEventListener("click", () => dlg.close());
 $("#closeBtn").addEventListener("click", () => dlg.close());
+// Birthdays come back every year: tick "Repeats every year" when the type is picked for a new event.
+$("#typeChoices").addEventListener("change", ev => { if (!editingId && ev.target.value === "birthday") form.repeat.checked = true; });
 $("#delBtn").addEventListener("click", ev => {
   const b = ev.currentTarget;
   if (!b.classList.contains("armed")){ b.classList.add("armed"); b.textContent = "Tap again to delete"; return; }
-  guarded(() => db.remove(db.ref(db.database, "events/" + editingId)), "Event deleted");
+  guarded(() => Promise.all([
+    db.remove(db.ref(db.database, "events/" + editingId)),
+    db.remove(db.ref(db.database, "rsvp/" + editingId)),
+  ]), "Event deleted");
 });
 
 // ---------- interactions ----------
 document.addEventListener("click", ev => {
-  const el = ev.target.closest("[data-year],[data-type],[data-loc],[data-reset],[data-ics],[data-edit]");
+  const el = ev.target.closest("[data-year],[data-type],[data-loc],[data-reset],[data-ics],[data-edit],[data-rsvp]");
   if (!el) return;
   if (el.dataset.ics) return ics(state.events.find(e => e.id === el.dataset.ics));
-  if (el.dataset.edit) return openEditor(state.events.find(e => e.id === el.dataset.edit));
+  if (el.dataset.edit) return openEditor(state.raw[el.dataset.edit]);
+  if (el.dataset.rsvp) return openRsvp(state.events.find(e => e.id === el.dataset.rsvp));
   if (el.dataset.year) state.year = Number(el.dataset.year);
   else if (el.dataset.type) state.type = state.type === el.dataset.type ? "" : el.dataset.type;
   else if (el.dataset.loc) state.loc = state.loc === el.dataset.loc ? "" : el.dataset.loc;
@@ -569,6 +738,7 @@ document.addEventListener("click", ev => {
 });
 $("#showPast").addEventListener("change", ev => { state.showPast = ev.target.checked; renderAll(); });
 $("#addBtn").addEventListener("click", () => openEditor(null));
+$("#addBday").addEventListener("click", () => openEditor(null, "birthday"));
 $("#subtitle").textContent = `What's coming up at CFH · ${YEARS[0]}–${YEARS[1]}`;
 
 // ---------- data ----------
@@ -581,6 +751,11 @@ async function start(){
     ]);
     db = {...D, database: D.getDatabase(initializeApp(FIREBASE))};
     D.onValue(D.ref(db.database, "events"), snap => setEvents(snap.val()), err => { console.error(err); showError(); });
+    D.onValue(D.ref(db.database, "rsvp"), snap => {
+      state.rsvp = snap.val() || {};
+      if (state.loaded) renderAll();
+      if (rdlg.open) renderRsvpList();
+    }, err => console.error(err));
     $("#addBtn").disabled = false;
   } catch (err){ console.error(err); showError(); }
 }
