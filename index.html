@@ -168,8 +168,11 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
 .textarea{height:auto;min-height:96px;padding:12px 14px;resize:none;line-height:1.45}
 .input:hover,.textarea:hover{border-color:rgba(255,255,255,.22)}
 .input:focus,.textarea:focus{border-color:rgba(188,255,139,.6);outline:none;box-shadow:0 0 0 3px rgba(188,255,139,.15)}
-.input[type=date],.input[type=time]{padding-right:10px;font-variant-numeric:tabular-nums}
+.input[type=date],.input[type=time]{padding-right:10px;line-height:42px;font-variant-numeric:tabular-nums}
+/* Safari/iOS draw the value with their own centring and margins: pin it left and vertically centred like the other fields */
+.input::-webkit-date-and-time-value{margin:0;text-align:left;line-height:42px;min-height:42px}
 .input::-webkit-datetime-edit{padding:0}
+.input::-webkit-datetime-edit-fields-wrapper{padding:0}
 .input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.55;cursor:pointer;margin-left:8px;padding:4px;border-radius:6px}
 .input::-webkit-calendar-picker-indicator:hover{opacity:.9;background-color:rgba(0,0,0,.2)}
 /* choice pills (type / location / status) */
